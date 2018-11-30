@@ -1,0 +1,12 @@
+const express = require('express');
+require('./services/passport');
+
+
+const app = express();
+
+require('./routes/authRoutes')(app);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
+// Log to feedback that this is actually running
+console.log('Server started on port ' + PORT);
