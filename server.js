@@ -2,8 +2,9 @@ const express = require('express');
 const mysql = require('mysql2');
 const keys = require('./config/keys');
 const Sequelize = require('sequelize');
-
+const User = require('./models/User');
 require('./services/passport');
+
 
 const sequelize = new Sequelize(keys.database, keys.username, keys.password, {
   host: 'localhost',
