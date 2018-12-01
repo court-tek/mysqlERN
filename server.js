@@ -1,8 +1,26 @@
 const express = require('express');
+const mysql = require('mysql2');
+const keys = require('./config/keys');
+const Sequelize = require('sequelize');
+
 require('./services/passport');
 
+const sequelize = new Sequelize(keys.database, keys.username, keys.password, {
+  host: 'localhost',
+  dialect: 'mysql',
+  operatorsAliases: false
+});
 
 const app = express();
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 require('./routes/authRoutes')(app);
 
