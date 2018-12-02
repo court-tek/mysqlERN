@@ -1,5 +1,6 @@
-module.exports = (seqaulize) => {
-  return sequelize.define('user', {
-    googleId: Sequelize.STRING
+module.exports = (dodo, type) => {
+  let User = dodo.define('user', {
+    googleId: type.STRING
   });
+  return User;
 }
